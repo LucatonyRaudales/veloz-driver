@@ -1,0 +1,119 @@
+{
+  "project_info": {
+    "project_number": "899779506718",
+    "firebase_url": "https://gulaeats.firebaseio.com",
+    "project_id": "gulaeats",
+    "storage_bucket": "gulaeats.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:899779506718:android:f65e94707b54e995a2b40f",
+        "android_client_info": {
+          "package_name": "com.gulaeats.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "899779506718-l5c3fok77crvsko1fmi0nd3fe3idipif.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnAZyGV_WmjeBx9iZfhZQlsInWC_Ml92c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "899779506718-l5c3fok77crvsko1fmi0nd3fe3idipif.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "899779506718-f9s13v0l3t1va3mfiic3k2qaijt9a1s4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.gulaeats.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:899779506718:android:8d28fb477802a13ba2b40f",
+        "android_client_info": {
+          "package_name": "com.gulaeats.app_repartidor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "899779506718-l5c3fok77crvsko1fmi0nd3fe3idipif.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnAZyGV_WmjeBx9iZfhZQlsInWC_Ml92c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "899779506718-l5c3fok77crvsko1fmi0nd3fe3idipif.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "899779506718-f9s13v0l3t1va3mfiic3k2qaijt9a1s4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.gulaeats.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:899779506718:android:b42e3b223a957f05a2b40f",
+        "android_client_info": {
+          "package_name": "com.gulaeats.app_restaurante"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "899779506718-l5c3fok77crvsko1fmi0nd3fe3idipif.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnAZyGV_WmjeBx9iZfhZQlsInWC_Ml92c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "899779506718-l5c3fok77crvsko1fmi0nd3fe3idipif.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "899779506718-f9s13v0l3t1va3mfiic3k2qaijt9a1s4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.gulaeats.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
