@@ -1,8 +1,5 @@
 import 'dart:async';
 import 'dart:typed_data';
-import 'package:deliveryboy/src/helpers/socket.dart';
-import 'package:provider/provider.dart';
-
 import '../controllers/map_controller.dart';
 import '../elements/CircularLoadingWidget.dart';
 import '../models/order.dart';
@@ -36,7 +33,6 @@ class _CurrentMapWidgetState extends StateMVC<CurrentMapWidget> {
   Marker myMarker;
   Circle circle;
   GoogleMapController _controller;
-  SocketService socketService;
 
 
 
@@ -53,8 +49,6 @@ class _CurrentMapWidgetState extends StateMVC<CurrentMapWidget> {
       print(_con.currentOrder.deliveryAddress.toMap().toString());
       _con.getCustomerMarker(_con.currentOrder.deliveryAddress.latitude, _con.currentOrder.deliveryAddress.longitude);
       _con.getOrderLocation();
-      print("Socketttttt");
-      socketService = new SocketService();
     } else {
       _con.getCurrentLocation();
     }
@@ -79,10 +73,7 @@ class _CurrentMapWidgetState extends StateMVC<CurrentMapWidget> {
     LatLng latlng = LatLng(newLocalData.latitude, newLocalData.longitude);
     
     this.setState(() {
-      print(socketService.isNewLocation);
-      socketService.isNewLocation = true;
-      print(socketService.isNewLocation);
-
+      _con.updateLocation( _con.currentOrder.id, latlng.latitude, latlng.longitude);
       _con.getDirectionStepsCustomer(latlng.latitude, latlng.longitude);
       myMarker = Marker(
           markerId: MarkerId("home"),
@@ -144,7 +135,6 @@ class _CurrentMapWidgetState extends StateMVC<CurrentMapWidget> {
 
   @override
   Widget build(BuildContext context) {
-    //socketService.emit('connect');
     return Scaffold(
       body: (_con.customerMarker == null) ?
         CircularLoadingWidget(height: 400)
@@ -166,7 +156,6 @@ class _CurrentMapWidgetState extends StateMVC<CurrentMapWidget> {
           floatingActionButton: FloatingActionButton(
               child: Icon(Icons.location_searching),
               onPressed: () {
-                //socketService.emit('send-location', LatLng(_con.currentOrder.deliveryAddress.latitude,_con.currentOrder.deliveryAddress.longitude));
                 getCurrentLocation();
               }
           ),

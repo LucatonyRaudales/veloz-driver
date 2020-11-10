@@ -71,6 +71,23 @@ Future<dynamic> setCurrentLocation() async {
   return whenDone.future;
 }
 
+
+updateLocation(id, lat, lng) async {
+  final String url = 'https://gulaeats.com.mx/public/api/location/${id}';
+  final client = new http.Client();
+
+  var order = new Map<String, dynamic>();
+  order["lat"] = lat;
+  order["lng"] = lng;
+
+  final response = await client.post(
+    url,
+    headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+    body: json.encode(order),
+  );
+  //print(response.body);
+}
+
 Future<Address> changeCurrentLocation(Address _address) async {
   if (!_address.isUnknown()) {
     SharedPreferences prefs = await SharedPreferences.getInstance();

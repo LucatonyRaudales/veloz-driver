@@ -126,6 +126,10 @@ class MapController extends ControllerMVC {
     });
   }
 
+  updateLocation(id, lat, lng){
+    sett.updateLocation(id, lat, lng);
+  }
+
   void getOrdersOfArea() async {
     setState(() {
       orders = <Order>[];
@@ -211,4 +215,5 @@ class MapController extends ControllerMVC {
     });
     listenForNearOrders(currentAddress, currentAddress);
   }
+
 }
