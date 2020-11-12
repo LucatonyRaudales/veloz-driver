@@ -73,7 +73,7 @@ class _CurrentMapWidgetState extends StateMVC<CurrentMapWidget> {
     LatLng latlng = LatLng(newLocalData.latitude, newLocalData.longitude);
     
     this.setState(() {
-      _con.updateLocation( _con.currentOrder.id, latlng.latitude, latlng.longitude);
+      _con.updateLocation( _con.currentOrder.id, latlng.latitude, latlng.longitude, newLocalData.heading, newLocalData.accuracy);
       _con.getDirectionStepsCustomer(latlng.latitude, latlng.longitude);
       myMarker = Marker(
           markerId: MarkerId("home"),

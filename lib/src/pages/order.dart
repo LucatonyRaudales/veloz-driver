@@ -1,6 +1,5 @@
 import '../elements/CircularLoadingWidget.dart';
 import '../elements/FoodOrderItemWidget.dart';
-import '../helpers/socket.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -30,7 +29,6 @@ class _OrderWidgetState extends StateMVC<OrderWidget> with SingleTickerProviderS
   TabController _tabController;
   int _tabIndex = 0;
   OrderDetailsController _con;
-  SocketService socketService;
 
   _OrderWidgetState() : super(OrderDetailsController()) {
     _con = controller;

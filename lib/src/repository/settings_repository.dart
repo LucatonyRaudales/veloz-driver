@@ -72,13 +72,15 @@ Future<dynamic> setCurrentLocation() async {
 }
 
 
-updateLocation(id, lat, lng) async {
+updateLocation(id, lat, lng, rotation, accuracy) async {
   final String url = 'https://gulaeats.com.mx/public/api/location/${id}';
   final client = new http.Client();
 
   var order = new Map<String, dynamic>();
   order["lat"] = lat;
   order["lng"] = lng;
+  order["rotation"]= rotation;
+  order["accuracy"]=accuracy;
 
   final response = await client.post(
     url,
