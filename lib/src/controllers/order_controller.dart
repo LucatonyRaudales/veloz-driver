@@ -64,4 +64,32 @@ class OrderController extends ControllerMVC {
     orders.clear();
     listenForOrders(message: S.of(context).order_refreshed_successfuly);
   }
+
+   void doUpdateAvaible(bool _active) async { 
+
+
+    updateAvaible(_active).then((value) {
+//       if(!preparingTime){
+      
+//         //Navigator.of(context).pushNamed('/OrderEdit', arguments: RouteArgument(id: order.id));
+//         Navigator.popAndPushNamed(context, '/OrderEdit', arguments: RouteArgument(id: order.id));
+//         //Navigator.of(context).pushNamedAndRemoveUntil('/OrderEdit', ModalRoute.withName('/Pages'), arguments: RouteArgument(id: order.id));
+//       }
+
+//       if(_order.orderStatus.id == '5' && order.payment.method == 'Pay on Pickup'){
+//          Navigator.of(context).pushNamedAndRemoveUntil('/Pages', (Route<dynamic> route) => false, arguments: RouteArgument(id: '1', statusOrder: '5'));
+//       }else if(_order.orderStatus.id == '4' && order.payment.method == 'Cash on Delivery'){
+//         Navigator.of(context).pushNamedAndRemoveUntil('/Pages', (Route<dynamic> route) => false, arguments: RouteArgument(id: '1', statusOrder: '4'));
+//       }else if(_order.orderStatus.id == '3'){
+//          Navigator.of(context).pushNamedAndRemoveUntil('/Pages', (Route<dynamic> route) => false, arguments: RouteArgument(id: '1', statusOrder: '3'));
+//       }
+// //      FocusScope.of(context).unfocus();
+// //      setState(() {
+// //        this.order.orderStatus.id = '5';
+// //      });
+//       scaffoldKey?.currentState?.showSnackBar(SnackBar(
+//         content: Text(S.of(context).thisOrderUpdatedSuccessfully),
+//       ));
+    });
+  }
 }

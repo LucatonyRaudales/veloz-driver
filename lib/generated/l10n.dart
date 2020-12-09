@@ -1250,6 +1250,15 @@ class S {
     );
   }
 
+  String get start {
+    return Intl.message(
+      'Iniciar trayectoria',
+      name: 'start',
+      desc: '',
+      args: [],
+    );
+  }
+
   String get km {
     return Intl.message(
       'Km',

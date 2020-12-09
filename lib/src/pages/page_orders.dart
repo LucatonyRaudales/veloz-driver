@@ -39,6 +39,7 @@ class PageOrdersWidget extends StatefulWidget {
 }
 
 class _PagesTestWidgetState extends State<PageOrdersWidget> {
+  
   initState() {
     super.initState();
     _selectTab(widget.currentTab);
@@ -77,8 +78,8 @@ class _PagesTestWidgetState extends State<PageOrdersWidget> {
       child: Scaffold(
         key: widget.scaffoldKey,
         drawer: DrawerWidget(),
-        body: OrdersWidget(parentScaffoldKey: widget.scaffoldKey),
-      ),
+        body: OrdersWidget(parentScaffoldKey: widget.scaffoldKey)
+        ),
     );
   }
 
@@ -92,4 +93,6 @@ class _PagesTestWidgetState extends State<PageOrdersWidget> {
     SystemChannels.platform.invokeMethod('SystemNavigator.pop');
     return Future.value(true);
   }
+
+  
 }

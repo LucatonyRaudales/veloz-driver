@@ -19,6 +19,7 @@ class OrdersWidget extends StatefulWidget {
 
 class _OrdersWidgetState extends StateMVC<OrdersWidget> {
   OrderController _con;
+  bool _active = false;
 
   _OrdersWidgetState() : super(OrderController()) {
     _con = controller;
@@ -54,26 +55,45 @@ class _OrdersWidgetState extends StateMVC<OrdersWidget> {
       body: RefreshIndicator(
         onRefresh: _con.refreshOrders,
         child: ListView(
-          padding: EdgeInsets.symmetric(vertical: 10),
-          children: <Widget>[
-            _con.orders.isEmpty
-                ? EmptyOrdersWidget()
-                : ListView.separated(
-                    scrollDirection: Axis.vertical,
-                    shrinkWrap: true,
-                    primary: false,
-                    itemCount: _con.orders.length,
-                    itemBuilder: (context, index) {
-                      var _order = _con.orders.elementAt(index);
-                      return OrderItemWidget(expanded: index == 0 ? true : false, order: _order);
-                    },
-                    separatorBuilder: (context, index) {
-                      return SizedBox(height: 20);
-                    },
+                padding: EdgeInsets.symmetric(vertical: 10),
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.all(10.0),
+                    child: _createSwitch()
                   ),
-          ],
-        ),
+                  _con.orders.isEmpty
+                      ? EmptyOrdersWidget()
+                      : ListView.separated(
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+                          primary: false,
+                          itemCount: _con.orders.length,
+                          itemBuilder: (context, index) {
+                            var _order = _con.orders.elementAt(index);
+                            return OrderItemWidget(expanded: index == 0 ? true : false, order: _order);
+                          },
+                          separatorBuilder: (context, index) {
+                            return SizedBox(height: 20);
+                          },
+                        ),
+                ],
+              ),
       ),
+    );
+  }
+
+  Widget _createSwitch() {
+    return SwitchListTile(
+      title: Text("Disponible"),
+      value: _active,
+      onChanged: (value){
+        setState((){
+          _active = value;
+           print(_active);
+          _con.doUpdateAvaible(_active);
+         
+        });
+      },
     );
   }
 }

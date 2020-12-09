@@ -314,7 +314,7 @@ class _OrderWidgetState extends StateMVC<OrderWidget> with SingleTickerProviderS
                         color: Theme.of(context).accentColor,
                         shape: StadiumBorder(),
                         child: Text(
-                          S.of(context).map,
+                          S.of(context).start,
                           textAlign: TextAlign.start,
                           style: TextStyle(color: Theme.of(context).primaryColor),
                         ),

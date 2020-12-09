@@ -169,3 +169,33 @@ Future<Order> deliveredOrder(Order order) async {
   );
   return Order.fromJSON(json.decode(response.body)['data']);
 }
+
+Future<Order> updateAvaible(bool active) async {
+  User _user = userRepo.currentUser.value;
+  Uri uri = Helper.getUri('api/drivers/${_user.id}');
+  // if (_user.apiToken == null) {
+  //   return new Order();
+  // }
+  // int available;
+  // if(active){
+  //   available = 1;
+  // }else{
+  //   available = 0;
+  // }
+  // Map<String, dynamic> _queryParams = {};
+  // _queryParams['api_token'] = _user.apiToken;
+  // //_queryParams['available'] = available.toString();
+  // uri = uri.replace(queryParameters: _queryParams);
+  // print(uri.toString());
+  // final client = new http.Client();
+  // var map = new Map<String, dynamic>();
+  // map["available"] = available;
+  
+  // final response = await client.put(
+  //    uri.toString(),
+  //    headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+  //    body: json.encode(map),
+  //  );
+  // print(json.decode(response.body)['data']);
+  // return Order.fromJSON(json.decode(response.body)['data']);
+}
