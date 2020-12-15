@@ -104,19 +104,19 @@ class _DrawerWidgetState extends StateMVC<DrawerWidget> {
                     color: Theme.of(context).focusColor.withOpacity(0.3),
                   ),
                 ),
-                ListTile(
-                  onTap: () {
-                    Navigator.of(context).pushNamed('/Help');
-                  },
-                  leading: Icon(
-                    Icons.help,
-                    color: Theme.of(context).focusColor.withOpacity(1),
-                  ),
-                  title: Text(
-                    S.of(context).help__support,
-                    style: Theme.of(context).textTheme.subtitle1,
-                  ),
-                ),
+                // ListTile(
+                //   onTap: () {
+                //     Navigator.of(context).pushNamed('/Help');
+                //   },
+                //   leading: Icon(
+                //     Icons.help,
+                //     color: Theme.of(context).focusColor.withOpacity(1),
+                //   ),
+                //   title: Text(
+                //     S.of(context).help__support,
+                //     style: Theme.of(context).textTheme.subtitle1,
+                //   ),
+                // ),
                 ListTile(
                   onTap: () {
                     Navigator.of(context).pushNamed('/Settings');

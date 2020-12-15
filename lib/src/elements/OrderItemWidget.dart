@@ -57,7 +57,7 @@ class _OrderItemWidgetState extends State<OrderItemWidget> {
                     children: <Widget>[
                       Helper.getPrice(Helper.getTotalOrdersPrice(widget.order), context, style: Theme.of(context).textTheme.headline4),
                       Text(
-                        '${widget.order.payment.method}',
+                        '${widget.order.payment.method}'== "Pay on Pickup" ? "Recoger" : "Entrega",
                         style: Theme.of(context).textTheme.caption,
                       )
                     ],

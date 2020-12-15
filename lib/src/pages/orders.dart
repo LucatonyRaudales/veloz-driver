@@ -57,10 +57,10 @@ class _OrdersWidgetState extends StateMVC<OrdersWidget> {
         child: ListView(
                 padding: EdgeInsets.symmetric(vertical: 10),
                 children: <Widget>[
-                  Container(
-                    padding: EdgeInsets.all(10.0),
-                    child: _createSwitch()
-                  ),
+                  // Container(
+                  //   padding: EdgeInsets.all(10.0),
+                  //   child: _createSwitch()
+                  // ),
                   _con.orders.isEmpty
                       ? EmptyOrdersWidget()
                       : ListView.separated(

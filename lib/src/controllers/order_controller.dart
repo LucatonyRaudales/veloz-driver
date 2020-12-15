@@ -17,8 +17,6 @@ class OrderController extends ControllerMVC {
     final Stream<Order> stream = await getOrders();
     stream.listen((Order _order) {
       setState(() {
-        print("Zimba Orders");
-        print(_order.id);
         orders.add(_order);
       });
     }, onError: (a) {
