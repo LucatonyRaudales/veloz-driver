@@ -18,6 +18,8 @@ class _SignUpWidgetState extends StateMVC<SignUpWidget> {
     _con = controller;
   }
 
+  String value = "Medio de transporte";
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -128,6 +130,65 @@ class _SignUpWidgetState extends StateMVC<SignUpWidget> {
                         ),
                       ),
                       SizedBox(height: 30),
+                      Container(
+                        child: Stack(
+                          children: [
+                            TextFormField(
+                              initialValue: ' ',
+                              enabled: false,
+                              decoration: InputDecoration(
+                                labelText: 'Transporte',
+                                labelStyle: TextStyle(color: Theme.of(context).accentColor),
+                                contentPadding: EdgeInsets.all(12),
+                                hintStyle: TextStyle(color: Theme.of(context).focusColor.withOpacity(0.7)),
+                                prefixIcon: Icon(Icons.navigation_outlined, color: Theme.of(context).accentColor),
+                                border: OutlineInputBorder(borderSide: BorderSide(color: Theme.of(context).focusColor.withOpacity(0.2))),
+                                focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Theme.of(context).focusColor.withOpacity(0.5))),
+                                enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Theme.of(context).focusColor.withOpacity(0.2))),
+                              ),
+                            ),
+                            Positioned(
+                              left: 45.0,
+                              right: 15.0,
+                              top: 12.0,
+                              bottom: 12.0,
+                              child: Container(
+                                width: 400.0,
+                                height: 30.0,
+                                child: DropdownButtonHideUnderline(
+                                  child: DropdownButton(
+                                    hint: Text(value
+                                    // , style: TextStyle(color: Theme.of(context).accentColor)
+                                    ),
+                                    underline: SizedBox(),
+                                    onChanged: (txt){
+                                      setState(() {
+                                        value = txt;
+                                        _con.user.transport = txt;
+                                      });
+                                    },
+                                    items: [
+                                      DropdownMenuItem(
+                                        value: 'Carro',
+                                        child: Text('Carro'),
+                                      ),
+                                      DropdownMenuItem(
+                                        value: 'Moto',
+                                        child: Text('Moto'),
+                                      ),
+                                      DropdownMenuItem(
+                                        value: 'Bicicleta',
+                                        child: Text('Bicicleta'),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 30),
                       BlockButtonWidget(
                         text: Text(
                           S.of(context).register,
@@ -138,22 +199,7 @@ class _SignUpWidgetState extends StateMVC<SignUpWidget> {
                           _con.register();
                         },
                       ),
-                      SizedBox(height: 25),
-//                      FlatButton(
-//                        onPressed: () {
-//                          Navigator.of(context).pushNamed('/MobileVerification');
-//                        },
-//                        padding: EdgeInsets.symmetric(vertical: 14),
-//                        color: Theme.of(context).accentColor.withOpacity(0.1),
-//                        shape: StadiumBorder(),
-//                        child: Text(
-//                          'Register with Google',
-//                          textAlign: TextAlign.start,
-//                          style: TextStyle(
-//                            color: Theme.of(context).accentColor,
-//                          ),
-//                        ),
-//                      ),
+                      SizedBox(height: 25)
                     ],
                   ),
                 ),

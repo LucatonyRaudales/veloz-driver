@@ -136,106 +136,107 @@ class _SettingsWidgetState extends StateMVC<SettingsWidget> {
                               style: Theme.of(context).textTheme.bodyText2,
                             ),
                             trailing: Text(
-                              currentUser.value.phone,
+                              '',
+                              // currentUser.value.phone.toString().length == 0 ? '' : currentUser.value.phone,
                               style: TextStyle(color: Theme.of(context).focusColor),
                             ),
                           ),
-                          ListTile(
-                            onTap: () {},
-                            dense: true,
-                            title: Text(
-                              S.of(context).address,
-                              style: Theme.of(context).textTheme.bodyText2,
-                            ),
-                            trailing: Text(
-                              Helper.limitString(currentUser.value.address),
-                              overflow: TextOverflow.fade,
-                              softWrap: false,
-                              style: TextStyle(color: Theme.of(context).focusColor),
-                            ),
-                          ),
-                          ListTile(
-                            onTap: () {},
-                            dense: true,
-                            title: Text(
-                              S.of(context).about,
-                              style: Theme.of(context).textTheme.bodyText2,
-                            ),
-                            trailing: Text(
-                              Helper.limitString(currentUser.value.bio),
-                              overflow: TextOverflow.fade,
-                              softWrap: false,
-                              style: TextStyle(color: Theme.of(context).focusColor),
-                            ),
-                          ),
+                          // ListTile(
+                          //   onTap: () {},
+                          //   dense: true,
+                          //   title: Text(
+                          //     S.of(context).address,
+                          //     style: Theme.of(context).textTheme.bodyText2,
+                          //   ),
+                          //   trailing: Text(
+                          //     Helper.limitString(currentUser.value.address),
+                          //     overflow: TextOverflow.fade,
+                          //     softWrap: false,
+                          //     style: TextStyle(color: Theme.of(context).focusColor),
+                          //   ),
+                          // ),
+                          // ListTile(
+                          //   onTap: () {},
+                          //   dense: true,
+                          //   title: Text(
+                          //     S.of(context).about,
+                          //     style: Theme.of(context).textTheme.bodyText2,
+                          //   ),
+                          //   trailing: Text(
+                          //     Helper.limitString(currentUser.value.bio),
+                          //     overflow: TextOverflow.fade,
+                          //     softWrap: false,
+                          //     style: TextStyle(color: Theme.of(context).focusColor),
+                          //   ),
+                          // ),
                         ],
                       ),
                     ),
-                    Container(
-                      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).primaryColor,
-                        borderRadius: BorderRadius.circular(6),
-                        boxShadow: [BoxShadow(color: Theme.of(context).hintColor.withOpacity(0.15), offset: Offset(0, 3), blurRadius: 10)],
-                      ),
-                      child: ListView(
-                        shrinkWrap: true,
-                        primary: false,
-                        children: <Widget>[
-                          ListTile(
-                            leading: Icon(Icons.settings),
-                            title: Text(
-                              S.of(context).app_settings,
-                              style: Theme.of(context).textTheme.bodyText1,
-                            ),
-                          ),
-                          ListTile(
-                            onTap: () {
-                              Navigator.of(context).pushNamed('/Languages');
-                            },
-                            dense: true,
-                            title: Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.translate,
-                                  size: 22,
-                                  color: Theme.of(context).focusColor,
-                                ),
-                                SizedBox(width: 10),
-                                Text(
-                                  S.of(context).languages,
-                                  style: Theme.of(context).textTheme.bodyText2,
-                                ),
-                              ],
-                            ),
-                            trailing: Text(
-                              S.of(context).english,
-                              style: TextStyle(color: Theme.of(context).focusColor),
-                            ),
-                          ),
-                          ListTile(
-                            onTap: () {
-                              Navigator.of(context).pushNamed('/Help');
-                            },
-                            dense: true,
-                            title: Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.help,
-                                  size: 22,
-                                  color: Theme.of(context).focusColor,
-                                ),
-                                SizedBox(width: 10),
-                                Text(
-                                  S.of(context).help_support,
-                                  style: Theme.of(context).textTheme.bodyText2,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    // Container(
+                    //   margin: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                    //   decoration: BoxDecoration(
+                    //     color: Theme.of(context).primaryColor,
+                    //     borderRadius: BorderRadius.circular(6),
+                    //     boxShadow: [BoxShadow(color: Theme.of(context).hintColor.withOpacity(0.15), offset: Offset(0, 3), blurRadius: 10)],
+                    //   ),
+                    //   child: ListView(
+                    //     shrinkWrap: true,
+                    //     primary: false,
+                    //     children: <Widget>[
+                    //       ListTile(
+                    //         leading: Icon(Icons.settings),
+                    //         title: Text(
+                    //           S.of(context).app_settings,
+                    //           style: Theme.of(context).textTheme.bodyText1,
+                    //         ),
+                    //       ),
+                    //       ListTile(
+                    //         onTap: () {
+                    //           Navigator.of(context).pushNamed('/Languages');
+                    //         },
+                    //         dense: true,
+                    //         title: Row(
+                    //           children: <Widget>[
+                    //             Icon(
+                    //               Icons.translate,
+                    //               size: 22,
+                    //               color: Theme.of(context).focusColor,
+                    //             ),
+                    //             SizedBox(width: 10),
+                    //             Text(
+                    //               S.of(context).languages,
+                    //               style: Theme.of(context).textTheme.bodyText2,
+                    //             ),
+                    //           ],
+                    //         ),
+                    //         trailing: Text(
+                    //           S.of(context).english,
+                    //           style: TextStyle(color: Theme.of(context).focusColor),
+                    //         ),
+                    //       ),
+                    //       ListTile(
+                    //         onTap: () {
+                    //           Navigator.of(context).pushNamed('/Help');
+                    //         },
+                    //         dense: true,
+                    //         title: Row(
+                    //           children: <Widget>[
+                    //             Icon(
+                    //               Icons.help,
+                    //               size: 22,
+                    //               color: Theme.of(context).focusColor,
+                    //             ),
+                    //             SizedBox(width: 10),
+                    //             Text(
+                    //               S.of(context).help_support,
+                    //               style: Theme.of(context).textTheme.bodyText2,
+                    //             ),
+                    //           ],
+                    //         ),
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
                   ],
                 ),
               ));
