@@ -147,9 +147,9 @@ class _OrderWidgetState extends StateMVC<OrderWidget> with SingleTickerProviderS
                                           // usually buttons at the bottom of the dialog
                                           FlatButton(
                                             child: new Text(S.of(context).confirm),
-                                            onPressed: () {
-                                              _con.doDeliveredOrder(_con.order);
-                                              Navigator.of(context).pop();
+                                            onPressed: () async{
+                                              await _con.doDeliveredOrder(_con.order);
+                                              Navigator.of(context).pushNamed('/PageOrders');
                                             },
                                           ),
                                           FlatButton(
@@ -182,9 +182,6 @@ class _OrderWidgetState extends StateMVC<OrderWidget> with SingleTickerProviderS
           ? CircularLoadingWidget(height: 400)
           : CustomScrollView(slivers: <Widget>[
               SliverAppBar(
-                snap: true,
-                floating: true,
-                automaticallyImplyLeading: false,
                 leading: new IconButton(
                   icon: new Icon(Icons.sort, color: Theme.of(context).hintColor),
                   onPressed: () => _con.scaffoldKey?.currentState?.openDrawer(),
@@ -200,12 +197,11 @@ class _OrderWidgetState extends StateMVC<OrderWidget> with SingleTickerProviderS
                 backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                 expandedHeight: 230,
                 elevation: 0,
-                flexibleSpace: FlexibleSpaceBar(
-                  background: Container(
-                    margin: EdgeInsets.only(top: 95, bottom: 65),
+                flexibleSpace: Container(
+                    margin: EdgeInsets.only(top: 85, bottom: 65),
                     padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
                     decoration: BoxDecoration(
-                      color: Theme.of(context).primaryColor.withOpacity(0.9),
+                      color: Colors.white,//Theme.of(context).primaryColor.withOpacity(0.9),
                       boxShadow: [
                         BoxShadow(color: Theme.of(context).focusColor.withOpacity(0.1), blurRadius: 5, offset: Offset(0, 2)),
                       ],
@@ -248,7 +244,7 @@ class _OrderWidgetState extends StateMVC<OrderWidget> with SingleTickerProviderS
                                 children: <Widget>[
                                   Helper.getPrice(Helper.getTotalOrdersPrice(_con.order), context, style: Theme.of(context).textTheme.headline4),
                                   Text(
-                                    _con.order.payment?.method ?? S.of(context).cash_on_delivery,
+                                  (_con.order.payment?.method == 'Cash on Delivery' || _con.order.payment?.method == null) ? S.of(context).cash_on_delivery : _con.order.payment?.method,
                                     overflow: TextOverflow.ellipsis,
                                     maxLines: 2,
                                     style: Theme.of(context).textTheme.caption,
@@ -265,8 +261,6 @@ class _OrderWidgetState extends StateMVC<OrderWidget> with SingleTickerProviderS
                       ],
                     ),
                   ),
-                  collapseMode: CollapseMode.pin,
-                ),
                 bottom: TabBar(
                     controller: _tabController,
                     indicatorSize: TabBarIndicatorSize.label,
@@ -302,11 +296,10 @@ class _OrderWidgetState extends StateMVC<OrderWidget> with SingleTickerProviderS
               SliverList(
                 delegate: SliverChildListDelegate([
                   SizedBox(height: 15),
-                  Container(
+                  /*Container(
                     padding: EdgeInsets.all(12),
                     child: FlatButton(
                         onPressed: (){
-
                           //Navigator.of(context).pushNamed('/Pages', arguments: new RouteArgument(id: '3', param: _con.order));
                           Navigator.of(context).pushNamed('/CurrentMap', arguments: new RouteArgument(param: _con.order));
                         },
@@ -319,7 +312,7 @@ class _OrderWidgetState extends StateMVC<OrderWidget> with SingleTickerProviderS
                           style: TextStyle(color: Theme.of(context).primaryColor),
                         ),
                     ),
-                  ),
+                  ),*/
                   Offstage(
                     offstage: 0 != _tabIndex,
                     child: ListView.separated(
@@ -414,7 +407,8 @@ class _OrderWidgetState extends StateMVC<OrderWidget> with SingleTickerProviderS
                                   padding: EdgeInsets.all(0),
                                   disabledColor: Theme.of(context).focusColor.withOpacity(0.4),
                                   onPressed: () {
-                                    Navigator.of(context).pushNamed('/Pages', arguments: new RouteArgument(id: '3', param: _con.order));
+                                    //Navigator.of(context).pushNamed('/Pages', arguments: new RouteArgument(id: '3', param: _con.order));
+                                    Navigator.of(context).pushNamed('/CurrentMap', arguments: new RouteArgument(param: _con.order));
                                   },
                                   child: Icon(
                                     Icons.directions,

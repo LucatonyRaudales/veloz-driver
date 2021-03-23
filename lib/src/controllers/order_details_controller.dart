@@ -34,8 +34,8 @@ class OrderDetailsController extends ControllerMVC {
   Future<void> refreshOrder() async {
     listenForOrder(id: order.id, message: S.of(context).order_refreshed_successfuly);
   }
-
-  void doDeliveredOrder(Order _order) async {
+  
+  Future<void>  doDeliveredOrder(Order _order) async {
     deliveredOrder(_order).then((value) {
       setState(() {
         this.order.orderStatus.id = '5';

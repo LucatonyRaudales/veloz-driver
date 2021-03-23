@@ -236,7 +236,7 @@ class S {
 
   String get cash_on_delivery {
     return Intl.message(
-      'Cash on delivery',
+      'Contra reembolso',
       name: 'cash_on_delivery',
       desc: '',
       args: [],
@@ -1189,8 +1189,8 @@ class S {
 
   String get ordered_foods {
     return Intl.message(
-      'Ordered Foods',
-      name: 'ordered_foods',
+      'Pedido',
+      name: 'Pedido',
       desc: '',
       args: [],
     );
@@ -1252,7 +1252,7 @@ class S {
 
   String get start {
     return Intl.message(
-      'Iniciar trayectoria',
+      'Ver mapa',
       name: 'start',
       desc: '',
       args: [],

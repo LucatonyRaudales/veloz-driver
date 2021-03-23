@@ -40,7 +40,7 @@ class _MyAppState extends State<MyApp> {
           print(CustomTrace(StackTrace.current, message: _setting.toMap().toString()));
           return MaterialApp(
               navigatorKey: settingRepo.navigatorKey,
-              title: _setting.appName,
+              title: 'Gula Repartidor',
               initialRoute: '/Splash',
               onGenerateRoute: RouteGenerator.generateRoute,
               debugShowCheckedModeBanner: false,

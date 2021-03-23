@@ -14,8 +14,11 @@ class OrderController extends ControllerMVC {
   }
 
   void listenForOrders({String message}) async {
+    //List<Order>  list = [];
     final Stream<Order> stream = await getOrders();
     stream.listen((Order _order) {
+      //list.add(_order);
+      //list.sort();
       setState(() {
         orders.add(_order);
       });
@@ -31,6 +34,7 @@ class OrderController extends ControllerMVC {
         ));
       }
     });
+    print('por aquí pasa tambie');
   }
 
   void listenForOrdersHistory({String message}) async {
