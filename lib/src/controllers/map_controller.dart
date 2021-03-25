@@ -79,13 +79,18 @@ class MapController extends ControllerMVC {
     }
   }
 
-  void getCustomerMarker(latitude, longitude) async {
+  Future<void> getCustomerMarker(latitude, longitude) async {
+    try {
      await Helper.getMyPositionMarker(latitude,longitude).then((marker) {
           setState(() {
             allMarkers.add(marker);
             customerMarker = marker; 
           });
         });
+    } catch (e) {
+      print('error');
+    }
+    return null;
   }
   void getOrderLocation() async {
     try {
