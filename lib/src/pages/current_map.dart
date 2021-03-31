@@ -63,7 +63,6 @@ ReceivePort port = ReceivePort();
     _con.currentOrder = widget.routeArgument?.param as Order;
     if (_con.currentOrder?.deliveryAddress?.latitude != null) {
       // user select a restaurant
-      print(_con.currentOrder.deliveryAddress.toMap().toString());
       await _con.getCustomerMarker(_con.currentOrder.deliveryAddress.latitude, _con.currentOrder.deliveryAddress.longitude);
       _con.getOrderLocation();
     }
@@ -156,7 +155,6 @@ static void callback(LocationDto locationDto) async {
       await  startLocationService();
       Uint8List imageData = await getMarker();
       var location = await _locationTracker.getLocation();
-
       updateMarkerAndCircle(location, imageData);
 
       if (_locationSubscription != null) {

@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
-
 import '../elements/CircularLoadingWidget.dart';
 import '../elements/FoodOrderItemWidget.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:intl/intl.dart' show DateFormat;
@@ -138,6 +137,9 @@ class _OrderWidgetState extends StateMVC<OrderWidget> with SingleTickerProviderS
                             width: MediaQuery.of(context).size.width - 40,
                             child: FlatButton(
                               onPressed: () {
+                                if(_con.status != LocationStatus.RUNNING){
+                                  _con.start();
+                                }else{
                                 showDialog(
                                     context: context,
                                     builder: (context) {
@@ -162,12 +164,13 @@ class _OrderWidgetState extends StateMVC<OrderWidget> with SingleTickerProviderS
                                         ],
                                       );
                                     });
+                                }
                               },
                               padding: EdgeInsets.symmetric(vertical: 14),
-                              color: Theme.of(context).accentColor,
+                              color: _con.status != LocationStatus.RUNNING ? Theme.of(context).accentColor : Colors.green[400],
                               shape: StadiumBorder(),
                               child: Text(
-                                S.of(context).delivered,
+                                _con.status != LocationStatus.RUNNING ? 'Iniciar envío' : S.of(context).delivered,
                                 textAlign: TextAlign.start,
                                 style: TextStyle(color: Theme.of(context).primaryColor),
                               ),
@@ -363,10 +366,8 @@ class _OrderWidgetState extends StateMVC<OrderWidget> with SingleTickerProviderS
                                 child: FlatButton(
                                   padding: EdgeInsets.all(0),
                                   disabledColor: Theme.of(context).focusColor.withOpacity(0.4),
-                                  //onPressed: () {
-//                                    Navigator.of(context).pushNamed('/Profile',
-//                                        arguments: new RouteArgument(param: _con.order.deliveryAddress));
-                                  //},
+                                 /* onPressed: () {
+                                  Navigator.of(context).pushNamed('/CurrentMap', arguments: new RouteArgument(param: _con.order));},*/
                                   child: Icon(
                                     Icons.person,
                                     color: Theme.of(context).primaryColor,
@@ -408,9 +409,9 @@ class _OrderWidgetState extends StateMVC<OrderWidget> with SingleTickerProviderS
                                   padding: EdgeInsets.all(0),
                                   disabledColor: Theme.of(context).focusColor.withOpacity(0.4),
                                   onPressed: () {
+                                    _con.launchMap();
                                     //Navigator.of(context).pushNamed('/Pages', arguments: new RouteArgument(id: '3', param: _con.order));
                                     //Navigator.of(context).pushNamed('/CurrentMap', arguments: new RouteArgument(param: _con.order));
-                                    _con.launchMap();
                                   },
                                   child: Icon(
                                     Icons.directions,
@@ -473,19 +474,6 @@ class _OrderWidgetState extends StateMVC<OrderWidget> with SingleTickerProviderS
                 ]),
               )
             ]),
-    floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-          floatingActionButton: _con.status == LocationStatus.RUNNING ? FloatingActionButton(
-            backgroundColor: Colors.grey,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children:[
-                Icon(Icons.close),
-                new Text('GPS')
-              ]),
-              onPressed: () {
-                _con.goOut();
-              }
-          ) : null,
     );
   }
 }

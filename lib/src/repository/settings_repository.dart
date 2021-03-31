@@ -72,8 +72,8 @@ Future<dynamic> setCurrentLocation() async {
 }
 
 
-updateLocation(id, lat, lng, rotation, accuracy) async {
-  final String url = 'https://gulaeats.com.mx/public/api/location/${id}';
+Future<void> updateLocation(id, lat, lng, rotation, accuracy) async {
+  final String url = '${GlobalConfiguration().getString('api_base_url')}api/location/${id}';
   final client = new http.Client();
 
   var order = new Map<String, dynamic>();
@@ -81,13 +81,15 @@ updateLocation(id, lat, lng, rotation, accuracy) async {
   order["lng"] = lng;
   order["rotation"]= rotation;
   order["accuracy"]=accuracy;
+  var encode = json.encode(order);
+  print(encode);
 
   final response = await client.post(
     url,
     headers: {HttpHeaders.contentTypeHeader: 'application/json'},
-    body: json.encode(order),
+    body: encode,
   );
-  //print(response.body);
+  print(encode);
 }
 
 Future<Address> changeCurrentLocation(Address _address) async {

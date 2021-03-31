@@ -131,8 +131,8 @@ class MapController extends ControllerMVC {
     });
   }
 
-  updateLocation(id, lat, lng, rotation, accuracy){
-    sett.updateLocation(id, lat, lng, rotation, accuracy);
+  updateLocation(id, lat, lng, rotation, accuracy)async {
+    await sett.updateLocation(id, lat, lng, rotation, accuracy);
   }
 
   void getOrdersOfArea() async {
