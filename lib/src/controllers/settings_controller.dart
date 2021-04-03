@@ -48,10 +48,16 @@ class SettingsController extends ControllerMVC {
 
   void changeStatus(User user, bool status)async{
     repository.updateStatus(user, status).then((value) {
-      setState(() {});
+      //setState(() {});
+      if(value){
       scaffoldKey?.currentState?.showSnackBar(SnackBar(
         content: Text('Estado actualizado'),
       ));
+      }else{
+      scaffoldKey?.currentState?.showSnackBar(SnackBar(
+        content: Text('Error al actualizar, intenta de nuevo'),
+      ));
+      }
     });
   }
 }

@@ -20,6 +20,14 @@ class _SettingsWidgetState extends StateMVC<SettingsWidget> {
   _SettingsWidgetState() : super(SettingsController()) {
     _con = controller;
   }
+  bool puedeActualizar;
+
+@override
+  void initState() {
+    puedeActualizar = false;
+    super.initState();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -164,8 +172,11 @@ class _SettingsWidgetState extends StateMVC<SettingsWidget> {
                                 textSize: 10.0,
                                 onChanged: (bool state) {
                                   //Use it to manage the different states
-                                  print('Current State of SWITCH IS: $state');
-                                  _con.changeStatus(currentUser.value, state);
+                                  if(puedeActualizar){
+                                    print('Current State of SWITCH IS: $state');
+                                    _con.changeStatus(currentUser.value, state);
+                                  }
+                                  puedeActualizar = true;
                                 },
                           ),
                             ),

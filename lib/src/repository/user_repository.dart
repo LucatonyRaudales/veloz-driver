@@ -129,18 +129,24 @@ Future<User> update(User user) async {
   return currentUser.value;
 }
 
-Future updateStatus(User user, bool status)async{
+Future<bool> updateStatus(User user, bool status)async{
   final String _apiToken = 'api_token=${currentUser.value.apiToken}';
-  final String url = '${GlobalConfiguration().getString('api_base_url')}location/${user.id}/$status?$_apiToken';
+  final String url = '${GlobalConfiguration().getString('api_base_url')}location/${user.id}';
   final client = new http.Client();
   final response = await client.put(
     url,
-    headers: {HttpHeaders.contentTypeHeader: 'application/json'},
-    body: json.encode(user.toMap()),
+    //headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+    body: {
+      'active' : status.toString()
+    },
   );
-  //setCurrentUser(response.body);
-  //currentUser.value = User.fromJSON(json.decode(response.body)['data']);
-  return null;
+  print('biod');
+  bool updated = json.decode(response.body)['success'];
+  if(updated){
+    setCurrentUser(response.body);
+    currentUser.value = User.fromJSON(json.decode(response.body)['data']);
+  }
+  return updated;
 }
 
 Future<Stream<Address>> getAddresses() async {
