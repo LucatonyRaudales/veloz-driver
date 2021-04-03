@@ -114,7 +114,7 @@ class OrderDetailsController extends ControllerMVC {
       locationManager.interval = 3;
       locationManager.distanceFilter = 0;
       locationManager.notificationTitle = 'Gula eat';
-      locationManager.notificationMsg = 'llevando ordern ${this.order.id}';
+      locationManager.notificationMsg = 'llevando orden ${this.order.id}';
       dtoStream = locationManager.dtoStream;
       // Subscribe if it hasnt been done already
       if (dtoSubscription != null) {

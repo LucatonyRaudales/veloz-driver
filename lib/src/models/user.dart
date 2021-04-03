@@ -12,6 +12,7 @@ class User {
   String phone;
   String address;
   String bio;
+  bool active;
   Media image;
 
   // used for indicate if client logged in or not
@@ -29,7 +30,8 @@ class User {
       transport = jsonMap['transport'] != null ? jsonMap['transport'] : '';
       apiToken = jsonMap['api_token'];
       deviceToken = jsonMap['device_token'];
-      try {
+      active = jsonMap['active'];
+      try {;
         phone = jsonMap['custom_fields']['phone']['view'];
       } catch (e) {
         phone = "";
@@ -58,6 +60,7 @@ class User {
     map["password"] = password;
     map['transport'] = transport;
     map["api_token"] = apiToken;
+    map["active"] = active;
     if (deviceToken != null) {
       map["device_token"] = deviceToken;
     }

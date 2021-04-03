@@ -45,4 +45,13 @@ class SettingsController extends ControllerMVC {
   Future<void> refreshSettings() async {
     creditCard = new CreditCard();
   }
+
+  void changeStatus(User user, bool status)async{
+    repository.updateStatus(user, status).then((value) {
+      setState(() {});
+      scaffoldKey?.currentState?.showSnackBar(SnackBar(
+        content: Text('Estado actualizado'),
+      ));
+    });
+  }
 }

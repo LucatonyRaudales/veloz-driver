@@ -129,6 +129,20 @@ Future<User> update(User user) async {
   return currentUser.value;
 }
 
+Future updateStatus(User user, bool status)async{
+  final String _apiToken = 'api_token=${currentUser.value.apiToken}';
+  final String url = '${GlobalConfiguration().getString('api_base_url')}location/${user.id}/$status?$_apiToken';
+  final client = new http.Client();
+  final response = await client.put(
+    url,
+    headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+    body: json.encode(user.toMap()),
+  );
+  //setCurrentUser(response.body);
+  //currentUser.value = User.fromJSON(json.decode(response.body)['data']);
+  return null;
+}
+
 Future<Stream<Address>> getAddresses() async {
   User _user = currentUser.value;
   final String _apiToken = 'api_token=${_user.apiToken}&';

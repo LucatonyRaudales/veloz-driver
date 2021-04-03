@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
 import '../../generated/l10n.dart';
@@ -120,7 +121,8 @@ class _SettingsWidgetState extends StateMVC<SettingsWidget> {
                             onTap: () {},
                             dense: true,
                             title: Text(
-                              S.of(context).email,
+                              'Correo',
+                              //S.of(context).email,
                               style: Theme.of(context).textTheme.bodyText2,
                             ),
                             trailing: Text(
@@ -136,9 +138,36 @@ class _SettingsWidgetState extends StateMVC<SettingsWidget> {
                               style: Theme.of(context).textTheme.bodyText2,
                             ),
                             trailing: Text(
-                              '',
-                              // currentUser.value.phone.toString().length == 0 ? '' : currentUser.value.phone,
+                              currentUser.value.phone ?? '--' ,
                               style: TextStyle(color: Theme.of(context).focusColor),
+                            ),
+                          ),
+                          ListTile(
+                            onTap: () {},
+                            dense: true,
+                            title: Text(
+                              'Estado',
+                              style: Theme.of(context).textTheme.bodyText2,
+                            ),
+                            trailing: Container(
+                            height: 32,
+                            width: 125,
+                              child: LiteRollingSwitch(
+                                //initial value
+                                value: currentUser.value.active,
+                                textOn: 'disponible',
+                                textOff: 'ocupado',
+                                colorOn: Colors.greenAccent[700],
+                                colorOff: Colors.redAccent[700],
+                                iconOn: Icons.done,
+                                iconOff: Icons.remove_circle_outline,
+                                textSize: 10.0,
+                                onChanged: (bool state) {
+                                  //Use it to manage the different states
+                                  print('Current State of SWITCH IS: $state');
+                                  _con.changeStatus(currentUser.value, state);
+                                },
+                          ),
                             ),
                           ),
                           // ListTile(
