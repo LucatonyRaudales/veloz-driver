@@ -73,7 +73,7 @@ Future<dynamic> setCurrentLocation() async {
 
 
 Future<void> updateLocation(id, lat, lng, rotation, accuracy) async {
-  final String url = '${GlobalConfiguration().getString('api_base_url')}api/location/${id}';
+  final String url = '${GlobalConfiguration().getString('base_url')}api/location/${id}';
   final client = new http.Client();
 
   var order = new Map<String, dynamic>();
