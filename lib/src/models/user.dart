@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import '../helpers/custom_trace.dart';
 import '../models/media.dart';
 
@@ -14,6 +16,7 @@ class User {
   String bio;
   bool active;
   Media image;
+  File media;
 
   // used for indicate if client logged in or not
   bool auth;
@@ -68,6 +71,7 @@ class User {
     map["address"] = address;
     map["bio"] = bio;
     map["media"] = image?.toMap();
+    //map['imagesend'] = imagesend;
     return map;
   }
 

@@ -1,5 +1,8 @@
+import 'dart:io';
+import 'dart:convert';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
 import '../../generated/l10n.dart';
@@ -15,6 +18,27 @@ class UserController extends ControllerMVC {
   GlobalKey<ScaffoldState> scaffoldKey;
   FirebaseMessaging _firebaseMessaging;
   OverlayEntry loader;
+
+   File image;
+  final picker = ImagePicker();
+
+  Future getImage(ImageSource source) async {
+    final pickedFile = await picker.getImage(source:source);
+    setState(() {
+      if (pickedFile != null) {
+        image = File(pickedFile.path);
+        user.media = image;
+        /*List<int> imageBytes = image.readAsBytesSync();
+        String base64Image = base64Encode(imageBytes);
+        print(base64Image);*/
+      } else {
+        print('No image selected.');
+      }
+    });
+   // var encodeimage = json.encode(image);
+    //print(encodeimage);
+    Navigator.pop(context);
+  }
 
   UserController() {
     loader = Helper.overlayLoader(context);

@@ -45,12 +45,12 @@ class ProfileAvatarWidget extends StatelessWidget {
                     width: 135,
                     fit: BoxFit.cover,
                     imageUrl: user.image.url,
-                    placeholder: (context, url) => Image.asset(
+                    placeholder: (context, url) => CircularProgressIndicator(), /*Image.asset(
                       'assets/img/loading.gif',
                       fit: BoxFit.cover,
                       height: 135,
                       width: 135,
-                    ),
+                    ),*/
                     errorWidget: (context, url, error) => Icon(Icons.error),
                   ),
                 ),
@@ -73,7 +73,7 @@ class ProfileAvatarWidget extends StatelessWidget {
             style: Theme.of(context).textTheme.headline5.merge(TextStyle(color: Theme.of(context).primaryColor)),
           ),
           Text(
-            user.address,
+            user.address ?? '-- --',
             style: Theme.of(context).textTheme.caption.merge(TextStyle(color: Theme.of(context).primaryColor)),
           ),
         ],

@@ -35,11 +35,20 @@ Future<User> login(User user) async {
 
 Future<User> register(User user) async {
   final String url = '${GlobalConfiguration().getString('api_base_url')}register';
+  //var encode = json.encode(user.toMap());
+  Map<String,String> headers = {'Content-Type':'application/json','authorization':'Basic c3R1ZHlkb3RlOnN0dWR5ZG90ZTEyMw=='};
   final client = new http.Client();
   final response = await client.post(
     url,
-    headers: {HttpHeaders.contentTypeHeader: 'application/json'},
-    body: json.encode(user.toMap()),
+    //headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+    body: {
+      'name' : user.name,
+      'email': user.email,
+      'transport': user.transport,
+      'password': user.password,
+      'deviceToken': user.deviceToken,
+      'media': jsonEncode(user.media)
+    },
   );
   if (response.statusCode == 200) {
     setCurrentUser(response.body);

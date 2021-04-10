@@ -4,7 +4,6 @@ import 'package:mvc_pattern/mvc_pattern.dart';
 import '../../generated/l10n.dart';
 import '../controllers/profile_controller.dart';
 import '../elements/CircularLoadingWidget.dart';
-import '../elements/OrderItemWidget.dart';
 import '../elements/ProfileAvatarWidget.dart';
 import '../elements/ShoppingCartButtonWidget.dart';
 
